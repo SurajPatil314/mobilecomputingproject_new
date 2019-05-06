@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "17444640663",
+    "firebase_url": "https://knight-bf46a.firebaseio.com",
+    "project_id": "knight-bf46a",
+    "storage_bucket": "knight-bf46a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17444640663:android:1969000bb309706e",
+        "android_client_info": {
+          "package_name": "com.example.mcproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17444640663-3uhrp6gec59b7ud926h3760lo0vnrjv2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mcproject",
+            "certificate_hash": "3a700493643cded77e213bde660d38c711f3c533"
+          }
+        },
+        {
+          "client_id": "17444640663-mgir102iuk520qrfqt0hf32st6lrumvl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmdEy1NA_5OoVopmzReInaEIXv8YCXqec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17444640663-mgir102iuk520qrfqt0hf32st6lrumvl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
