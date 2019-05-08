@@ -16,6 +16,11 @@
         <activity android:name=".new_game_creation_page"/>
         <activity android:name=".create_join_game"/>
         <activity android:name=".RegisterUsers"/>
+        <activity android:name=".GameOn"></activity>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBpfcb5CTPi7-DasSkCxZtkZik2mUD166g" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
