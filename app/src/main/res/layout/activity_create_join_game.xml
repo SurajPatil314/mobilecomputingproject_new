@@ -153,4 +153,12 @@
                 android:onClick="go_search_game"
                 android:background="@drawable/trans_button" />
         </LinearLayout>
+
+    <Button
+        android:id="@+id/Logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:text="Log out" />
+
 </LinearLayout>

@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import static com.example.mcproject.MainActivity.fauthSS;
+import static com.example.mcproject.MainActivity.mGoogleSignInClient;
+
 public class create_join_game extends AppCompatActivity {
 
 LinearLayout creategame;
@@ -61,5 +64,12 @@ private TextView searchgame_tostart;
         b.putString("GameName", gamename);
         intent.putExtras(b);
         startActivity(intent);
+    }
+
+    public void logout(View view) {
+        fauthSS.signOut();
+        mGoogleSignInClient.signOut();
+        Intent i = new Intent(getBaseContext(), MainActivity.class);
+        startActivity(i);
     }
 }
