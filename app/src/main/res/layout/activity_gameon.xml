@@ -4,24 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".GameOn">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/Question"
-            android:layout_width="320dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="0.0"
-            android:textSize="16dp" />
+            android:text="First Question appears here.."
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/submit"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/trans_button"
             android:onClick="verifyAnswer"
             android:text="Submit" />
 
@@ -44,7 +51,8 @@
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="548dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="460dp"
         tools:context=".GameOn" />
 
     <LinearLayout
@@ -55,13 +63,17 @@
             android:id="@+id/showhinttext"
             android:layout_width="287dp"
             android:layout_height="47dp"
-            android:text="Hints" />
+            android:text="Hints"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/showhint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
+            android:background="@drawable/trans_button"
             android:onClick="showHints"
             android:text="Show Hint" />
 
