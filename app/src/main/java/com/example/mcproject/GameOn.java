@@ -147,4 +147,51 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         };
         ref.addListenerForSingleValueEvent(valueEventListener);
     }
+
+    private void verifyAnswer(Location ansLocation) {
+        getLocation();
+        Location myLoc = new Location("myLoc");
+        myLoc.setLatitude(latitudedata);
+        myLoc.setLongitude(longitudedata);
+
+        Log.d("Pratik-MyLocation:", latitudedata.toString()+"/"+longitudedata.toString());
+        double distance = myLoc.distanceTo(ansLocation);
+        Log.d("Pratik-", String.valueOf(distance));
+        if(distance <= 5.00) {
+            //It is correct, Show next question
+            questionnumber++;
+            showQuestion();
+        }
+    }
+
+    public void verifyAnswer(View view) {
+        DatabaseReference ref = dataref.child(gameName).child(questionnumber.toString());
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Double ansLatitude = null;
+                Double ansLongitude = null;
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if(ds.getKey().equals("latitude"))
+                         ansLatitude = (Double) ds.getValue();
+                    if(ds.getKey().equals("longitude"))
+                        ansLongitude = (Double)ds.getValue();
+                }
+                if(ansLatitude != null && ansLongitude != null) {
+                    Log.d("Pratik-", ansLatitude.toString() + "/" + ansLongitude.toString());
+                    Location anslocation = new Location("Answer");
+                    anslocation.setLatitude(ansLatitude);
+                    anslocation.setLongitude(ansLongitude);
+                    verifyAnswer(anslocation);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("Error",databaseError.toString());
+            }
+        };
+        ref.addListenerForSingleValueEvent(valueEventListener);
+
+    }
 }
