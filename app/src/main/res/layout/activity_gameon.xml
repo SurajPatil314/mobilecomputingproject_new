@@ -40,8 +40,29 @@
         tools:context=".UserActivity" /-->
     <fragment
         android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="548dp"
-        class="com.google.android.gms.maps.SupportMapFragment"
         tools:context=".GameOn" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/showhinttext"
+            android:layout_width="287dp"
+            android:layout_height="47dp"
+            android:text="Hints" />
+
+        <Button
+            android:id="@+id/showhint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="showHints"
+            android:text="Show Hint" />
+
+    </LinearLayout>
+
 </LinearLayout>

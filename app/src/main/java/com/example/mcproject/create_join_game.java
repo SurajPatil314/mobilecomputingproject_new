@@ -51,9 +51,14 @@ private TextView searchgame_tostart;
     }
 
     public void startGame(View view) {
+        String gamename = searchgame_tostart.getText().toString().trim();
+        gamename = "firstgame";
+        if(gamename.isEmpty())
+            return;
+
         Intent intent = new Intent(getApplicationContext(), GameOn.class);
         Bundle b = new Bundle();
-        b.putString("GameName", searchgame_tostart.getText().toString().trim());
+        b.putString("GameName", gamename);
         intent.putExtras(b);
         startActivity(intent);
     }
