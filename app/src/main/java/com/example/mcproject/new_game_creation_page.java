@@ -2,6 +2,7 @@ package com.example.mcproject;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
@@ -29,9 +30,13 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
     private TextView questionstore;
     private TextView hintstore;
     Double longitudedata;
-    Double latitudedata;
+    Double latitudedata,datalatitudefinal,datalongitudefinal;
     LocationManager locationManager;
-    Integer questionnumber = 0;
+    Integer questionnumber = 0,questionnumberfinal;
+    String lastq,hintdfinal,questiondfinal,creatorofgamefinal;
+    Button btn_yes ;
+    Button btn_no;
+
 
 
     @Override
@@ -82,14 +87,22 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
 
             System.out.println("longitude::" + datalongitude + "::latitude" + datalatitude);
             String questiond = questionstore.getText().toString();
+            questiondfinal=questiond;
             String hintd = hintstore.getText().toString();
+            hintdfinal=hintd;
             questions que = new questions();
             que.setQuestion(questiond);
+
             que.setHint(hintd);
             que.setLatitude(datalatitude);
+            datalatitudefinal=datalatitude;
             que.setLongitude(datalongitude);
+            datalongitudefinal=datalongitude;
             que.setCreator(creatorofgame);
+            creatorofgamefinal=creatorofgame;
             que.setQno(questionnumber);
+            questionnumberfinal=questionnumber;
+            lastq=questionnumber.toString();
             dataref.child(gamename).child(questionnumber.toString()).setValue(que);
             Toast.makeText(new_game_creation_page.this, "Successfully saved your question", Toast.LENGTH_LONG).show();
 
@@ -101,11 +114,13 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
     void alertboxfunction() {
         final AlertDialog.Builder newQalert = new AlertDialog.Builder(new_game_creation_page.this);
         View mview = getLayoutInflater().inflate(R.layout.nextquestionset, null);
-        Button btn_yes = (Button) mview.findViewById(R.id.yesQ);
-        Button btn_no = (Button) mview.findViewById(R.id.noQ);
+         btn_yes = (Button) mview.findViewById(R.id.yesQ);
+         btn_no = (Button) mview.findViewById(R.id.noQ);
 
-        newQalert.setView(mview);
+
         final AlertDialog adilog = newQalert.create();
+        adilog.setView(mview);
+
         adilog.setCanceledOnTouchOutside(false);
 
         btn_yes.setOnClickListener(new View.OnClickListener() {
@@ -120,15 +135,38 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
         btn_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(lastq!=null && hintdfinal!=null && questiondfinal!=null && datalatitudefinal!=null && datalongitudefinal!=null && creatorofgamefinal!=null)
+                {
+                    System.out.println("lastq value in no button"+lastq);
+                    fauth = FirebaseAuth.getInstance();
+                    questions que = new questions();
+                    que.setQuestion(questiondfinal);
 
-                Intent i = new Intent(getBaseContext(), create_join_game.class);
-                startActivity(i);
+                    que.setHint(hintdfinal);
+                    que.setLatitude(datalatitudefinal);
+                    que.setLongitude(datalongitudefinal);
+                    que.setCreator(creatorofgamefinal);
+                    que.setFinalquestion("yes");
+                    Toast.makeText(new_game_creation_page.this, "game saved successfully", Toast.LENGTH_LONG).show();
+                    dataref.child(gamename).child(lastq).setValue(que);
+                    Intent i = new Intent(getBaseContext(), create_join_game.class);
+                    startActivity(i);
+                }
+                else
+                {
+                    Toast.makeText(new_game_creation_page.this, "Some data is missing for last question", Toast.LENGTH_LONG).show();
+                    adilog.dismiss();
+                }
+
+
+
 
 
             }
         });
+        adilog.show();
 
-        newQalert.show();
+
     }
 
 

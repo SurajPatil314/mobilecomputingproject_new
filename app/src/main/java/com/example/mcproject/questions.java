@@ -9,6 +9,16 @@ public class questions {
     String creator;
     String ownerID;
 
+    public String getFinalquestion() {
+        return finalquestion;
+    }
+
+    public void setFinalquestion(String finalquestion) {
+        this.finalquestion = finalquestion;
+    }
+
+    String finalquestion;
+
     public Integer getQno() {
         return qno;
     }

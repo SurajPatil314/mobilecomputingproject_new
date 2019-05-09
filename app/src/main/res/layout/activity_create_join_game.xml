@@ -115,9 +115,9 @@
                 android:id="@+id/new_game"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Search game"
+                android:background="@drawable/trans_button"
                 android:onClick="go_create_game"
-                android:background="@drawable/trans_button" />
+                android:text="create game" />
 
         </LinearLayout>
 
