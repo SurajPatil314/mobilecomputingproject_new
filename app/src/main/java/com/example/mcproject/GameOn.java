@@ -36,7 +36,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
     SupportMapFragment mapFragment;
     private FirebaseAuth fauth;
     private DatabaseReference dataref;
-    private String gameName = "firstgame",locationpermission;
+    private String gameName,locationpermission;
     GoogleMap mmap;
     SupportMapFragment mapFrag;
     LocationManager locationManager;
@@ -60,7 +60,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         Bundle extras = getIntent().getExtras();
         if(extras == null)
             return;
-        gameName = extras.getString("GameName");
+        gameName = extras.getString("gamesearched");
         locationpermission=extras.getString("locationpermssion");  //added by Suraj for location permission check....05/09
         showQuestion();
     }
@@ -110,6 +110,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
     }
 
     private void showQuestion() {
+        System.out.println("game name recieved from intent"+gameName);
         DatabaseReference ref = dataref.child(gameName).child(questionnumber.toString());
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
