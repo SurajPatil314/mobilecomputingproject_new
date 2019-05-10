@@ -36,7 +36,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
     SupportMapFragment mapFragment;
     private FirebaseAuth fauth;
     private DatabaseReference dataref;
-    private String gameName = "firstgame";
+    private String gameName = "firstgame",locationpermission;
     GoogleMap mmap;
     SupportMapFragment mapFrag;
     LocationManager locationManager;
@@ -61,6 +61,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         if(extras == null)
             return;
         gameName = extras.getString("GameName");
+        locationpermission=extras.getString("locationpermssion");  //added by Suraj for location permission check....05/09
         showQuestion();
     }
 

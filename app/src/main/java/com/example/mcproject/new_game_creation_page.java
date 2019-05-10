@@ -126,6 +126,8 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
         btn_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                questionstore.setText(" ");
+                hintstore.setText(" ");
                 adilog.dismiss();
 
 
