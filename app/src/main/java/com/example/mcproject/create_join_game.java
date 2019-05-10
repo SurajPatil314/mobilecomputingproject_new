@@ -48,7 +48,7 @@ private TextView searchgame_tostart;
 
     public void go_search_game(View view) {
         String gameseached= searchgame_tostart.getText().toString().trim();
-        Intent i = new Intent(getBaseContext(), searched_game_page.class);
+        Intent i = new Intent(getBaseContext(), GameOn.class);
         i.putExtra("gamesearched",gameseached);
         startActivity(i);
     }
