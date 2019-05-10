@@ -37,7 +37,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
     SupportMapFragment mapFragment;
     private FirebaseAuth fauth;
     private DatabaseReference dataref;
-    private String gameName = "firstgame";
+    private String gameName,locationpermission;
     GoogleMap mmap;
     SupportMapFragment mapFrag;
     LocationManager locationManager;
@@ -61,17 +61,21 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         Bundle extras = getIntent().getExtras();
         if(extras == null)
             return;
-        gameName = extras.getString("GameName");
+        gameName = extras.getString("gamesearched");
+        locationpermission=extras.getString("locationpermssion");  //added by Suraj for location permission check....05/09
+        Log.d("pratik-location", locationpermission);
         showQuestion();
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mmap = googleMap;
-        LatLng ll = new LatLng(latitudedata, longitudedata);
-        mmap.addMarker(new MarkerOptions().position(ll));
-        mmap.moveCamera(CameraUpdateFactory.newLatLng(ll));
-        mmap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 18.0f));
+        if(locationpermission.equals("Public")) {
+            LatLng ll = new LatLng(latitudedata, longitudedata);
+            mmap.addMarker(new MarkerOptions().position(ll));
+            mmap.moveCamera(CameraUpdateFactory.newLatLng(ll));
+            mmap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 18.0f));
+        }
     }
 
     void getLocation() {
@@ -88,10 +92,14 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
 
     @Override
     public void onLocationChanged(Location location) {
-        System.out.printf("Current Location: " + location.getLatitude() + ", " + location.getLongitude());
         latitudedata = location.getLatitude();
         longitudedata = location.getLongitude();
-        System.out.printf("Current Location in onLocationChanged: " + latitudedata + ", " + longitudedata);
+        if(locationpermission.equals("Public")) {
+            LatLng ll = new LatLng(latitudedata, longitudedata);
+            mmap.addMarker(new MarkerOptions().position(ll));
+            mmap.moveCamera(CameraUpdateFactory.newLatLng(ll));
+            mmap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 18.0f));
+        }
     }
 
     @Override
@@ -110,6 +118,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
     }
 
     private void showQuestion() {
+        System.out.println("game name recieved from intent"+gameName);
         DatabaseReference ref = dataref.child(gameName).child(questionnumber.toString());
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -149,7 +158,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         ref.addListenerForSingleValueEvent(valueEventListener);
     }
 
-    private void verifyAnswer(Location ansLocation) {
+    private void verifyAnswer(Location ansLocation, boolean islast) {
         getLocation();
         Location myLoc = new Location("myLoc");
         myLoc.setLatitude(latitudedata);
@@ -160,6 +169,11 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         Log.d("Pratik-", String.valueOf(distance));
         if(distance <= 5.00) {
             //It is correct, Show next question
+            if(islast) {
+                Log.d("message", "Congratulations! You won!");
+                //start new activity
+                return;
+            }
             questionnumber++;
             showQuestion();
         }
@@ -172,18 +186,21 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Double ansLatitude = null;
                 Double ansLongitude = null;
+                boolean islast = false;
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     if(ds.getKey().equals("latitude"))
                          ansLatitude = (Double) ds.getValue();
                     if(ds.getKey().equals("longitude"))
                         ansLongitude = (Double)ds.getValue();
+                    if(ds.getKey().equals("finalquestion"))
+                        islast = true;
                 }
                 if(ansLatitude != null && ansLongitude != null) {
                     Log.d("Pratik-", ansLatitude.toString() + "/" + ansLongitude.toString());
                     Location anslocation = new Location("Answer");
                     anslocation.setLatitude(ansLatitude);
                     anslocation.setLongitude(ansLongitude);
-                    verifyAnswer(anslocation);
+                    verifyAnswer(anslocation, islast);
                 }
             }
 

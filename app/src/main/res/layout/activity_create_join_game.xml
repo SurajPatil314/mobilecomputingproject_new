@@ -58,30 +58,35 @@
             android:layout_margin="10dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true">
+
             <LinearLayout
-                android:background="@color/lightBrown"
+                android:id="@+id/join_game1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:background="@color/lightBrown"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
-                    android:layout_height="64dp"
                     android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundpurple"
-                    android:src="@drawable/ic_input_black_24dp"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:src="@drawable/ic_input_black_24dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:text="Join Game"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/lightGreyLine"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:background="@color/lightGreyLine" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -122,44 +127,57 @@
                 android:id="@+id/new_game"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Search game"
+                android:background="@drawable/trans_button"
                 android:onClick="go_create_game"
-                android:background="@drawable/trans_button" />
+                android:text="create game" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/hiddensearch"
+    <LinearLayout
+        android:id="@+id/hiddensearch"
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="invisible">
+            android:text="Enter game name/id to join"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Enter game name/id to join"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/search_game"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColor="#ffffff" />
 
-            <EditText
-                android:id="@+id/search_game"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:textColor="#ffffff" />
+        <Switch
+            android:id="@+id/switchlocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/lightBrown"
+            android:checked="true"
+            android:hint="select private mode if you don't want to share your location with us"
+            android:text="Live Location sharing mode"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textOff="Private"
+            android:textOn="Public" />
 
-            <Button
-                android:id="@+id/search_game_hidden"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Search game"
-                android:onClick="go_search_game"
-                android:background="@drawable/trans_button" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/search_game_hidden"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/trans_button"
+            android:onClick="go_search_game"
+            android:text="Search game" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/Logout"
