@@ -35,21 +35,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:inputType="textPersonName" />
         </LinearLayout>
 
         <Button
             android:id="@+id/leaderbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search players who are leading" />
+            android:text="Search players who are leading"
+            android:onClick="searchgame"/>
 
         <Button
             android:id="@+id/go_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="go back" />
+            android:text="go back"
+            android:onClick="goback"/>
     </LinearLayout>
 
     <LinearLayout
