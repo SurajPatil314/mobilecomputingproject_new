@@ -109,10 +109,7 @@ public class create_join_game extends AppCompatActivity {
                             gamefound=1;
                             break;
                         }
-                        else
-                        {
-                            Toast.makeText(create_join_game.this, "to creategame you need to enter game name.Enter game name first", Toast.LENGTH_LONG).show();
-                        }
+
                     }
 
                     if(gamefound==1)
@@ -126,6 +123,7 @@ public class create_join_game extends AppCompatActivity {
                     else
                     {
                         System.out.println("gamefound value is 0 at the end");
+                        Toast.makeText(create_join_game.this, "to creategame you need to enter game name.Enter game name first", Toast.LENGTH_LONG).show();
                     }
 
                 }

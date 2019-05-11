@@ -3,8 +3,17 @@ package com.example.mcproject;
 public class leaderboard {
     String gamename;
     String username;
-    String time;
+   Integer finishtime;
     String emailid;
+
+    public Integer getFinishtime() {
+        return finishtime;
+    }
+
+    public void setFinishtime(Integer finishtime) {
+        this.finishtime = finishtime;
+    }
+
     public String getGamename() {
         return gamename;
     }
@@ -21,13 +30,7 @@ public class leaderboard {
         this.username = username;
     }
 
-    public String getTime() {
-        return time;
-    }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     public String getEmailid() {
         return emailid;

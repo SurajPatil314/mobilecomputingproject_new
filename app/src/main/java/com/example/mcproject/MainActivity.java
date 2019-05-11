@@ -32,6 +32,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
     private TextView emailSS;
     private  TextView passwordSS;
@@ -44,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        compareValues();
         setContentView(R.layout.activity_main);
         checkPermission();
         passwordSS = (TextView) findViewById(R.id.passwordS);
@@ -164,6 +173,37 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                         }
                     }
                 });
+    }
+
+    public void compareValues(){
+        Map<String, Integer> olympic2012 = new HashMap<String, Integer>();
+
+        olympic2012.put("England", 3);
+        olympic2012.put("USA", 1);
+        olympic2012.put("China", 2);
+        olympic2012.put("Russia", 4);
+        olympic2012.put("xyz", 2);
+
+        List<Map.Entry<String, Integer>> list = new LinkedList(olympic2012.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        Map<String, Integer> result = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        System.out.println("Hashmap - ");
+        for (String name: result.keySet()){
+            String key = name.toString();
+            String value = result.get(name).toString();
+            System.out.println(key + " " + value);
+        }
+
     }
 
 }

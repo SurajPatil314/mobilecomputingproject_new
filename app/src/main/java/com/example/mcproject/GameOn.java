@@ -2,6 +2,7 @@ package com.example.mcproject;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Location;
 import android.location.LocationListener;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +40,7 @@ import java.util.List;
 public class GameOn extends FragmentActivity implements OnMapReadyCallback, LocationListener {
     SupportMapFragment mapFragment;
     private FirebaseAuth fauth;
-    private DatabaseReference dataref;
+    private DatabaseReference dataref,datarefleader;
     private String gameName,locationpermission;
     GoogleMap mmap;
     SupportMapFragment mapFrag;
@@ -71,6 +73,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         dataref = FirebaseDatabase.getInstance().getReference().child("GsmeDatabase");
+        datarefleader= FirebaseDatabase.getInstance().getReference().child("leaderboard");
 
         Bundle extras = getIntent().getExtras();
         if(extras == null)
@@ -189,11 +192,27 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
             Toast.makeText(GameOn.this, "Correct answer, heading towards next question", Toast.LENGTH_LONG).show();
             if(islast) {
                 //timer()
-                stoptimer();//totaltime
+                System.out.println("in islast loop");
+                stoptimer();
+                //totaltime
                 Log.d("message", "Congratulations! You won!");
                 Toast.makeText(GameOn.this, "Congratulations! You finished the game", Toast.LENGTH_LONG).show();
+                fauth = FirebaseAuth.getInstance();
+                leaderboard le = new leaderboard();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                String email = user.getEmail();
+                System.out.println("email::"+email);
+                le.setEmailid(email);
+                le.setFinishtime(totalTime);
+                System.out.println("totaltime::"+totalTime);
+                le.setGamename(gameName);
+
+                datarefleader.child(gameName).child(uuid).setValue(le);
                 //start new activity
-                return;
+                Intent i = new Intent(getBaseContext(), leaderboard_afterlastquestion.class);
+                i.putExtra("gamename_lastq",gameName);
+                startActivity(i);
             }
             questionnumber++;
             showQuestion();
