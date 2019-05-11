@@ -8,6 +8,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.content.ContextCompat;
@@ -48,11 +49,23 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
     private TextView hint;
     private TextView question;
     static Integer questionnumber = 1;
+
+
+    private Handler customHandler = new Handler();
+    private TextView timerValue;
+    private long startTime = 0L;
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
+    public static int totalTime;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameon);
         getLocation();
+
         question = (TextView)findViewById(R.id.Question);
         hint = (TextView) findViewById(R.id.showhinttext);
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -66,6 +79,9 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         locationpermission=extras.getString("locationpermssion");  //added by Suraj for location permission check....05/09
         Log.d("pratik-location", locationpermission);
         showQuestion();
+
+        timerValue = (TextView) findViewById(R.id.timerValue);
+        starttimer();
     }
 
     @Override
@@ -172,6 +188,8 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
             //It is correct, Show next question
             Toast.makeText(GameOn.this, "Correct answer, heading towards next question", Toast.LENGTH_LONG).show();
             if(islast) {
+                //timer()
+                stoptimer();//totaltime
                 Log.d("message", "Congratulations! You won!");
                 Toast.makeText(GameOn.this, "Congratulations! You finished the game", Toast.LENGTH_LONG).show();
                 //start new activity
@@ -218,4 +236,37 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         ref.addListenerForSingleValueEvent(valueEventListener);
 
     }
+
+    public void starttimer() {
+        startTime = SystemClock.uptimeMillis();
+        customHandler.postDelayed(updateTimerThread, 0);
+    }
+
+    public void stoptimer() {
+        timeSwapBuff += timeInMilliseconds;
+        customHandler.removeCallbacks(updateTimerThread);
+    }
+
+    private Runnable updateTimerThread = new Runnable() {
+
+        public void run() {
+
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+            int secs = (int) (updatedTime / 1000);
+            int mins = secs / 60;
+            secs = secs % 60;
+            int hours = mins/60;
+            //put this value in database.
+            totalTime = secs + (mins*60*60) + (hours*60*60);
+            //totalTime = hours + ":" + mins + ":" + secs;
+            timerValue.setText("" + hours + ":" + mins + ":"
+                    + String.format("%02d", secs) );
+            customHandler.postDelayed(this, 0);
+
+        }
+
+    };
+
+
 }
