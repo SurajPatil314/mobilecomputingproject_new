@@ -103,8 +103,9 @@
                 android:id="@+id/show_board"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/trans_button"
                 android:text="Go to Leaderboard"
-                android:background="@drawable/trans_button" />
+                android:onClick="go_to_leaderboard"/>
 
             <TextView
                 android:id="@+id/textView5"

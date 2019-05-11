@@ -109,6 +109,10 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
             alertboxfunction();
             // dataref.push().setValue(newuser1);
         }
+        else
+        {
+            Toast.makeText(new_game_creation_page.this, "to creategame you need to enter game name.Enter game name first in previous screen", Toast.LENGTH_LONG).show();
+        }
     }
 
     void alertboxfunction() {

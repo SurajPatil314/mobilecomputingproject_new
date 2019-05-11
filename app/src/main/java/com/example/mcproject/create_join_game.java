@@ -57,9 +57,17 @@ public class create_join_game extends AppCompatActivity {
 
     public void go_create_game(View view) {
         String nameofgame = gamename.getText().toString().trim();
-        Intent i = new Intent(getBaseContext(), new_game_creation_page.class);
-        i.putExtra("gamename",nameofgame);
-        startActivity(i);
+        if(nameofgame!=null)
+        {
+            Intent i = new Intent(getBaseContext(), new_game_creation_page.class);
+            i.putExtra("gamename",nameofgame);
+            startActivity(i);
+        }
+        else
+        {
+
+        }
+
     }
 
     public void go_search_game(View view) {
@@ -100,6 +108,10 @@ public class create_join_game extends AppCompatActivity {
                             System.out.println("data in for loop in if loop"+data.getKey());
                             gamefound=1;
                             break;
+                        }
+                        else
+                        {
+                            Toast.makeText(create_join_game.this, "to creategame you need to enter game name.Enter game name first", Toast.LENGTH_LONG).show();
                         }
                     }
 
@@ -151,6 +163,11 @@ public class create_join_game extends AppCompatActivity {
         fauthSS.signOut();
         mGoogleSignInClient.signOut();
         Intent i = new Intent(getBaseContext(), MainActivity.class);
+        startActivity(i);
+    }
+
+    public void go_to_leaderboard(View view) {
+        Intent i = new Intent(getBaseContext(), Leaderboardactivity.class);
         startActivity(i);
     }
 }

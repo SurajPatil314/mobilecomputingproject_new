@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -169,13 +170,18 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         Log.d("Pratik-", String.valueOf(distance));
         if(distance <= 5.00) {
             //It is correct, Show next question
+            Toast.makeText(GameOn.this, "Correct answer, heading towards next question", Toast.LENGTH_LONG).show();
             if(islast) {
                 Log.d("message", "Congratulations! You won!");
+                Toast.makeText(GameOn.this, "Congratulations! You finished the game", Toast.LENGTH_LONG).show();
                 //start new activity
                 return;
             }
             questionnumber++;
             showQuestion();
+        }
+        else {
+            Toast.makeText(GameOn.this, "Wrong answer. Please try again", Toast.LENGTH_LONG).show();
         }
     }
 
