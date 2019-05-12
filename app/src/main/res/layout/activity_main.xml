@@ -105,20 +105,6 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/starttime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="starttimer"
-            android:text="StartTimer" />
-
-        <Button
-            android:id="@+id/endtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="stoptimer"
-            android:text="StopTimer" />
-
-        <Button
             android:id="@+id/Leader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

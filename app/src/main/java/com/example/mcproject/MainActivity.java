@@ -203,7 +203,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             String value = result.get(name).toString();
             System.out.println(key + " " + value);
         }
-
     }
 
     public void leader(View view) {
