@@ -60,16 +60,9 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
     }
 
     public void getcreatornamebuttonaction(View view) {
-    if(creatorname!=null)
-    {
+
         creatorofgame = creatorname.getText().toString().trim();
         Toast.makeText(new_game_creation_page.this, "Successfully saved creator name", Toast.LENGTH_LONG).show();
-    }
-
-    else
-    {
-        Toast.makeText(new_game_creation_page.this, "Successfully saved creator name", Toast.LENGTH_LONG).show();
-    }
 
     }
 
@@ -91,38 +84,28 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
         fauth = FirebaseAuth.getInstance();
 
         if (gamename != null) {
-            if(creatorofgame!= null)
-            {
-                System.out.println("longitude::" + datalongitude + "::latitude" + datalatitude);
-                String questiond = questionstore.getText().toString();
-                questiondfinal=questiond;
-                String hintd = hintstore.getText().toString();
-                hintdfinal=hintd;
-                questions que = new questions();
-                que.setQuestion(questiond);
 
-                que.setHint(hintd);
-                que.setLatitude(datalatitude);
-                datalatitudefinal=datalatitude;
-                que.setLongitude(datalongitude);
-                datalongitudefinal=datalongitude;
-                que.setCreator(creatorofgame);
-                creatorofgamefinal=creatorofgame;
-                que.setQno(questionnumber);
-                questionnumberfinal=questionnumber;
-                lastq=questionnumber.toString();
-                dataref.child(gamename).child(questionnumber.toString()).setValue(que);
-                Toast.makeText(new_game_creation_page.this, "Successfully saved your question", Toast.LENGTH_LONG).show();
-
-                alertboxfunction();
-                // dataref.push().setValue(newuser1);
-            }
-            else
-            {
-                Toast.makeText(new_game_creation_page.this, "enter game creator name before creating question set", Toast.LENGTH_LONG).show();
-            }
-
-
+            System.out.println("longitude::" + datalongitude + "::latitude" + datalatitude);
+            String questiond = questionstore.getText().toString();
+            questiondfinal=questiond;
+            String hintd = hintstore.getText().toString();
+            hintdfinal=hintd;
+            questions que = new questions();
+            que.setQuestion(questiond);
+            que.setHint(hintd);
+            que.setLatitude(datalatitude);
+            datalatitudefinal=datalatitude;
+            que.setLongitude(datalongitude);
+            datalongitudefinal=datalongitude;
+            que.setCreator(creatorofgame);
+            creatorofgamefinal=creatorofgame;
+            que.setQno(questionnumber);
+            questionnumberfinal=questionnumber;
+            lastq=questionnumber.toString();
+            dataref.child(gamename).child(questionnumber.toString()).setValue(que);
+            Toast.makeText(new_game_creation_page.this, "Successfully saved your question", Toast.LENGTH_LONG).show();
+            alertboxfunction();
+            // dataref.push().setValue(newuser1);
         }
         else
         {
@@ -135,8 +118,6 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
         View mview = getLayoutInflater().inflate(R.layout.nextquestionset, null);
          btn_yes = (Button) mview.findViewById(R.id.yesQ);
          btn_no = (Button) mview.findViewById(R.id.noQ);
-
-
         final AlertDialog adilog = newQalert.create();
         adilog.setView(mview);
 

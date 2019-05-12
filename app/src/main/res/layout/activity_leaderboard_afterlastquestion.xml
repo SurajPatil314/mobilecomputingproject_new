@@ -13,8 +13,8 @@
             android:id="@+id/gameId"
             android:layout_width="300dp"
             android:layout_height="45dp"
-            android:text="@string/gameId"
-            android:textColor="#ffffff"
+            android:text=""
+            android:textColor="@color/colorAccent"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -27,6 +27,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:divider="@color/material_blue_grey_800"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
             android:dividerHeight="1dp" />
 
 

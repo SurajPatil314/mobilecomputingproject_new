@@ -67,7 +67,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameon);
         getLocation();
-
+        questionnumber = 1;
         question = (TextView)findViewById(R.id.Question);
         hint = (TextView) findViewById(R.id.showhinttext);
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);

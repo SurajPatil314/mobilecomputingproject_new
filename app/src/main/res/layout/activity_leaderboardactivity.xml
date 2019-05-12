@@ -62,6 +62,16 @@
             android:id="@+id/gameId"
             android:layout_width="match_parent"
             android:layout_height="71dp"
-            android:text="Game name" />
+            android:textColor="@color/colorAccent"
+            android:text="" />
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/simpleListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/material_blue_grey_800"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:dividerHeight="1dp" />
+
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,18 +29,22 @@ import static com.example.mcproject.R.layout.activity_listview;
 public class leaderboard_afterlastquestion extends AppCompatActivity {
 private TextView gameId;
     ListView simpleList;
-    String countryList[] = {"India", "China", "australia", "Portugle", "America", "NewZealand"};
+    //String countryList[] = {"India", "China", "australia", "Portugle", "America", "NewZealand"};
     Map<String, Long> map = new HashMap<String, Long>();
     ArrayList<String> winner = new ArrayList<String>();
     private DatabaseReference dataref;
+    private String gameName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard_afterlastquestion);
         gameId = (TextView) findViewById(R.id.gameId);
-        gameId.setText("qwe");
-        dataref = FirebaseDatabase.getInstance().getReference().child("leaderboard").child("qwe");
+        Bundle extras = getIntent().getExtras();
+        if(extras == null)
+            return;
+        gameName = extras.getString("gamename_lastq");
+        dataref = FirebaseDatabase.getInstance().getReference().child("leaderboard").child(gameName);
         simpleList = (ListView)findViewById(R.id.simpleListView);
         try {
             getData();
@@ -47,8 +52,14 @@ private TextView gameId;
                 @Override
                 public void run() {
                     compare();
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(leaderboard_afterlastquestion.this, R.layout.activity_listview, R.id.textView, winner);
-                    simpleList.setAdapter(arrayAdapter);
+                    gameId.setText(gameName);
+                    if(winner.size()>0) {
+                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(leaderboard_afterlastquestion.this, R.layout.activity_listview, R.id.textView, winner);
+                        simpleList.setAdapter(arrayAdapter);
+                    }
+                    else{
+                        Toast.makeText(leaderboard_afterlastquestion.this, "No one played this game yet", Toast.LENGTH_LONG).show();
+                    }
                 }
             }, 5000);
 
@@ -58,6 +69,12 @@ private TextView gameId;
 
 
     }
+
+    /*@Override
+    protected void onResume() {
+        super.onResume();
+        gameId.setText("krishna");
+    }*/
 
     public void getData() throws InterruptedException {
        //DatabaseReference d1 = dataref.
