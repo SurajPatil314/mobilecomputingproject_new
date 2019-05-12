@@ -3,7 +3,8 @@
     <color name="colorPrimary">#b74b19</color>
     <color name="colorPrimaryDark">#4f1c04</color>
     <color name="lightGreyLine">#EDEDED</color>
-    <color name="deepPurple">#7C4DFF</color>
+    <color name="deepPurple">#8A2BE2</color>
+    <color name="crimson">#DC143C</color>
     <color name="materialGreen">#00BFA5</color>
     <color name="colorAccent">#7C4DFF</color>
     <color name="lightBrown">#DEB887</color>
