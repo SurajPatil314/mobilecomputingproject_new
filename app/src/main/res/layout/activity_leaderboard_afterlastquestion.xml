@@ -34,14 +34,13 @@
     </LinearLayout>
 
 
-
-        <ListView
-            android:id="@+id/simpleListView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:divider="@color/material_blue_grey_800"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:dividerHeight="1dp" />
+    <ListView
+        android:id="@+id/simpleListView"
+        android:layout_width="fill_parent"
+        android:layout_height="321dp"
+        android:divider="@color/material_blue_grey_800"
+        android:dividerHeight="1dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true" />
 
 
 
