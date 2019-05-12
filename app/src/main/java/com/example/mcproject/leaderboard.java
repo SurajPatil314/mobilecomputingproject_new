@@ -1,4 +1,7 @@
 package com.example.mcproject;
 
-public class leaderboard {
+import android.support.v7.app.AppCompatActivity;
+
+public class leaderboard extends AppCompatActivity {
+    
 }
