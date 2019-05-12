@@ -93,7 +93,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mmap = googleMap;
-        if(locationpermission.equals("Public")) {
+        if(locationpermission.equals("Public") && mmap != null) {
             LatLng ll = new LatLng(latitudedata, longitudedata);
             mmap.addMarker(new MarkerOptions().position(ll));
             mmap.moveCamera(CameraUpdateFactory.newLatLng(ll));
@@ -117,7 +117,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
     public void onLocationChanged(Location location) {
         latitudedata = location.getLatitude();
         longitudedata = location.getLongitude();
-        if(locationpermission.equals("Public")) {
+        if(locationpermission.equals("Public") && mmap != null) {
             LatLng ll = new LatLng(latitudedata, longitudedata);
             System.out.println("Latlag new SP"+ll);
             mmap.addMarker(new MarkerOptions().position(ll));
