@@ -22,27 +22,45 @@
             android:layout_margin="10dp"
             app:srcCompat="@drawable/winners" />
 
-        <TextView
-            android:id="@+id/gameId"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:text=""
-            android:textColor="#FFFFFF"
-            android:textSize="30dp"
-            android:textStyle="bold" />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/gameIdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="#FFFFFF"
+                android:text="Game ID: "
+                android:textSize="25dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/gameId"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
 
     <ListView
         android:id="@+id/simpleListView"
         android:layout_width="fill_parent"
-        android:layout_height="321dp"
+        android:layout_height="318dp"
         android:divider="@color/material_blue_grey_800"
         android:dividerHeight="1dp"
         android:scrollbarAlwaysDrawVerticalTrack="true" />
 
-
+    <Button
+        android:id="@+id/main_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/trans_button"
+        android:onClick="go_to_main_screen"
+        android:text="Main Screen" />
 
 </LinearLayout>
 
