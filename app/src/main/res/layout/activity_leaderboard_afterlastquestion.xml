@@ -34,14 +34,14 @@
                 android:text="Game ID: "
                 android:textSize="25dp"
                 android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/gameId"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
-            android:text=""
-            android:textColor="#FFFFFF"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/gameId"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
@@ -52,7 +52,7 @@
     <ListView
         android:id="@+id/simpleListView"
         android:layout_width="fill_parent"
-        android:layout_height="385dp"
+        android:layout_height="318dp"
         android:divider="@color/material_blue_grey_800"
         android:dividerHeight="1dp"
         android:scrollbarAlwaysDrawVerticalTrack="true" />
