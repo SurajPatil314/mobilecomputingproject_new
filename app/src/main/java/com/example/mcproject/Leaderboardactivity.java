@@ -177,11 +177,17 @@ public class Leaderboardactivity extends AppCompatActivity {
 
 
         System.out.println("Hashmap - ");
+        int i = 1;
         for (String name: result.keySet()){
             String key = name.toString();
-            winner.add(key);
             String value = result.get(name).toString();
+            long time = result.get(name);
+            long min = time / 60;
+            long sec = time % 60;
+            String temp = "" + i + ". " + key + "   " + min + ":" + sec ;
+            winner.add(temp);
             System.out.println(key + " " + value);
+            i++;
         }
 
         System.out.println("Length of winner - " + winner.size());
