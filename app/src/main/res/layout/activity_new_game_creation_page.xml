@@ -11,6 +11,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="68dp"
         android:orientation="horizontal">
 
@@ -19,7 +24,10 @@
             android:layout_width="146dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="How you want to display game creator name? enter name" />
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:text="Game creator name: " />
 
         <EditText
             android:id="@+id/creatorname"
@@ -27,6 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:textSize="20dp"
+            android:textColor="#FFFFFF"
             android:inputType="textPersonName" />
     </LinearLayout>
 
@@ -38,9 +48,12 @@
         <Button
             android:id="@+id/creatorname_button"
             android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
-            android:text="submit creator name"
+            android:text="Submit creator name"
+            android:background="@drawable/trans_button"
             android:onClick="getcreatornamebuttonaction"/>
+    </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -53,11 +66,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Kindly note that as this is location based game, you need to go to actual places to save location as answer to your question." />
     </LinearLayout>
 
     <LinearLayout
@@ -74,26 +82,34 @@
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reached desired location. Now enter your question" />
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:text="Reached desired location? Now enter your question." />
 
         <EditText
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:ems="10"
+            android:textSize="20dp"
             android:inputType="textMultiLine" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Want to give players hint about question. Enter hint below (Optional)" />
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:text="Enter hint below (Optional)" />
 
         <EditText
             android:id="@+id/hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
             android:inputType="textMultiLine" />
 
         <Button
@@ -101,6 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit question"
+            android:background="@drawable/trans_button"
             android:onClick="submitquestonbuttoactin"/>
     </LinearLayout>
 

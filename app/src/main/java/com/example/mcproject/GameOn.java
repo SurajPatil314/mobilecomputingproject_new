@@ -13,6 +13,7 @@ import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.content.ContextCompat;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -69,7 +70,9 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         getLocation();
         questionnumber = 1;
         question = (TextView)findViewById(R.id.Question);
+        question.setMovementMethod(new ScrollingMovementMethod());
         hint = (TextView) findViewById(R.id.showhinttext);
+        hint.setMovementMethod(new ScrollingMovementMethod());
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         dataref = FirebaseDatabase.getInstance().getReference().child("GsmeDatabase");
@@ -116,6 +119,7 @@ public class GameOn extends FragmentActivity implements OnMapReadyCallback, Loca
         longitudedata = location.getLongitude();
         if(locationpermission.equals("Public")) {
             LatLng ll = new LatLng(latitudedata, longitudedata);
+            System.out.println("LAtlag new SP"+ll);
             mmap.addMarker(new MarkerOptions().position(ll));
             mmap.moveCamera(CameraUpdateFactory.newLatLng(ll));
             mmap.animateCamera(CameraUpdateFactory.newLatLngZoom(ll, 18.0f));

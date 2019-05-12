@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
+    android:padding="20dp"
     tools:context=".Leaderboardactivity">
 
     <LinearLayout
@@ -27,6 +29,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 android:text="Enter game name to view leaderboard" />
 
             <EditText
@@ -35,6 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="#FFFFFF"
+                android:textSize="18dp"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
@@ -42,7 +49,8 @@
             android:id="@+id/leaderbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search players who are leading"
+            android:background="@drawable/trans_button"
+            android:text="Leading Players"
             android:onClick="searchgame"/>
 
         <Button
@@ -50,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="go back"
+            android:background="@drawable/trans_button"
             android:onClick="goback"/>
     </LinearLayout>
 
@@ -62,7 +71,9 @@
             android:id="@+id/gameId"
             android:layout_width="match_parent"
             android:layout_height="71dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:text="" />
     </LinearLayout>
 

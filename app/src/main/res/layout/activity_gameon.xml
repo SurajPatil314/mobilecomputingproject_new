@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:text="First Question appears here.."
             android:textColor="#ffffff"
-            android:textSize="16dp"
+            android:textSize="20dp"
+            android:scrollbars="vertical"
             android:textStyle="bold" />
 
         <Button
@@ -47,11 +48,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".UserActivity" /-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="vertical">
+    </LinearLayout>
     <fragment
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="289dp"
+        android:layout_height="348dp"
         android:layout_marginTop="8dp"
         tools:context=".GameOn" />
 
@@ -64,6 +70,7 @@
             android:layout_width="287dp"
             android:layout_height="47dp"
             android:text="Hints"
+            android:scrollbars="vertical"
             android:textColor="#ffffff"
             android:textStyle="bold" />
 
