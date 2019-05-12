@@ -158,14 +158,15 @@ public class create_join_game extends AppCompatActivity {
     */
 
     public void logout(View view) {
-        fauthSS.signOut();
+        if(fauthSS != null)
+            fauthSS.signOut();
         mGoogleSignInClient.signOut();
         Intent i = new Intent(getBaseContext(), MainActivity.class);
         startActivity(i);
     }
 
     public void go_to_leaderboard(View view) {
-        Intent i = new Intent(getBaseContext(), Leaderboardactivity.class);
+        Intent i = new Intent(getBaseContext(), leaderboard_afterlastquestion.class);
         startActivity(i);
     }
 }

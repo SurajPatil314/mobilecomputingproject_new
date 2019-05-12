@@ -91,4 +91,41 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp" />
 
+    <TextView
+        android:id="@+id/timerValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/timerVal"
+        android:textColor="#ffffff"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/starttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="starttimer"
+            android:text="StartTimer" />
+
+        <Button
+            android:id="@+id/endtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="stoptimer"
+            android:text="StopTimer" />
+
+        <Button
+            android:id="@+id/Leader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Leader "
+            android:onClick="leader"/>
+
+    </LinearLayout>
+
 </LinearLayout>

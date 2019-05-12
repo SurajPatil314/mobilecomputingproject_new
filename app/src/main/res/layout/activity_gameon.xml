@@ -78,7 +78,10 @@
             android:text="Show Hint" />
 
 
+
+
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/timerValue"

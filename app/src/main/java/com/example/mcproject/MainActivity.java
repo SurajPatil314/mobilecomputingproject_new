@@ -206,4 +206,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
+    public void leader(View view) {
+        Intent i = new Intent(getApplicationContext(), leaderboard_afterlastquestion.class);
+        startActivity(i);
+    }
 }
