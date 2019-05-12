@@ -92,7 +92,6 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
             hintdfinal=hintd;
             questions que = new questions();
             que.setQuestion(questiond);
-
             que.setHint(hintd);
             que.setLatitude(datalatitude);
             datalatitudefinal=datalatitude;
@@ -105,7 +104,6 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
             lastq=questionnumber.toString();
             dataref.child(gamename).child(questionnumber.toString()).setValue(que);
             Toast.makeText(new_game_creation_page.this, "Successfully saved your question", Toast.LENGTH_LONG).show();
-
             alertboxfunction();
             // dataref.push().setValue(newuser1);
         }
@@ -120,8 +118,6 @@ public class new_game_creation_page extends AppCompatActivity implements Locatio
         View mview = getLayoutInflater().inflate(R.layout.nextquestionset, null);
          btn_yes = (Button) mview.findViewById(R.id.yesQ);
          btn_no = (Button) mview.findViewById(R.id.noQ);
-
-
         final AlertDialog adilog = newQalert.create();
         adilog.setView(mview);
 

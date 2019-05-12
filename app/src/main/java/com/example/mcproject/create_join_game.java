@@ -166,7 +166,7 @@ public class create_join_game extends AppCompatActivity {
     }
 
     public void go_to_leaderboard(View view) {
-        Intent i = new Intent(getBaseContext(), leaderboard_afterlastquestion.class);
+        Intent i = new Intent(getBaseContext(), Leaderboardactivity.class);
         startActivity(i);
     }
 }

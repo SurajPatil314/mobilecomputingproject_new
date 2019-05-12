@@ -47,12 +47,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public static GoogleSignInClient mGoogleSignInClient;
     private SignInButton signInButton;
 
-    // private DatabaseReference dataref;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        compareValues();
         setContentView(R.layout.activity_main);
         checkPermission();
         passwordSS = (TextView) findViewById(R.id.passwordS);
@@ -73,29 +70,17 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
                     String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid(); //getting current user ID
-
-
-
                     Toast.makeText(MainActivity.this, "Successfully signed in", Toast.LENGTH_LONG).show();
-
-
                     Log.i("uuid::",currentuser);
-
-
                     Intent i = new Intent(getBaseContext(), create_join_game.class);
-
                     startActivity(i);
-
                 } else {
                     Toast.makeText(MainActivity.this, "sign in Failed. Invalid credentials?", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
     }
-
 
     public void registerS(View view) {
         Intent i = new Intent(getBaseContext(), RegisterUsers.class);
@@ -106,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
         ){//Can add more as per requirement
-
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     123);
@@ -175,38 +159,4 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 });
     }
 
-    public void compareValues(){
-        Map<String, Integer> olympic2012 = new HashMap<String, Integer>();
-
-        olympic2012.put("England", 3);
-        olympic2012.put("USA", 1);
-        olympic2012.put("China", 2);
-        olympic2012.put("Russia", 4);
-        olympic2012.put("xyz", 2);
-
-        List<Map.Entry<String, Integer>> list = new LinkedList(olympic2012.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        });
-
-        Map<String, Integer> result = new LinkedHashMap<>();
-        for (Map.Entry<String, Integer> entry : list) {
-            result.put(entry.getKey(), entry.getValue());
-        }
-
-        System.out.println("Hashmap - ");
-        for (String name: result.keySet()){
-            String key = name.toString();
-            String value = result.get(name).toString();
-            System.out.println(key + " " + value);
-        }
-    }
-
-    public void leader(View view) {
-        Intent i = new Intent(getApplicationContext(), leaderboard_afterlastquestion.class);
-        startActivity(i);
-    }
 }
