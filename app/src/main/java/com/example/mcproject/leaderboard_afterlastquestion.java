@@ -1,9 +1,11 @@
 package com.example.mcproject;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -136,5 +138,11 @@ private TextView gameId;
 
         System.out.println("Length of winner - " + winner.size());
     }
+
+    public void go_to_main_screen(View view) {
+        Intent i = new Intent(getBaseContext(), create_join_game.class);
+        startActivity(i);
+    }
+
 
 }
