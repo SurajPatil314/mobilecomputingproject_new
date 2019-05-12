@@ -84,12 +84,17 @@
             android:text="" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/simpleListView"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/material_blue_grey_800"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:dividerHeight="1dp" />
+        android:background="@color/lightBrown">
 
+        <ListView
+            android:id="@+id/simpleListView"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/material_blue_grey_800"
+            android:dividerHeight="1dp"
+            android:scrollbarAlwaysDrawVerticalTrack="true" />
+    </LinearLayout>
 </LinearLayout>
