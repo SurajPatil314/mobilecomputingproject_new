@@ -62,8 +62,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     public void signinS(View view) {
-        String passss= "pratik"; //passwordSS.getText().toString().trim();
-        String emailss= "pracshi@gmail.com";//emailSS.getText().toString().trim();
+        String passss= passwordSS.getText().toString().trim();
+        String emailss= emailSS.getText().toString().trim();;
+
 
         fauthSS= FirebaseAuth.getInstance();
         fauthSS.signInWithEmailAndPassword(emailss,passss).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
