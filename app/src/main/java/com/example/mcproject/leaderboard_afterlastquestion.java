@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,11 +37,14 @@ private TextView gameId;
     ArrayList<String> winner = new ArrayList<String>();
     private DatabaseReference dataref;
     private String gameName;
+    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard_afterlastquestion);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         gameId = (TextView) findViewById(R.id.gameId);
         Bundle extras = getIntent().getExtras();
         if(extras == null)
@@ -50,6 +54,7 @@ private TextView gameId;
         simpleList = (ListView)findViewById(R.id.simpleListView);
         try {
             getData();
+
             (new Handler()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -62,6 +67,7 @@ private TextView gameId;
                     else{
                         Toast.makeText(leaderboard_afterlastquestion.this, "No one played this game yet", Toast.LENGTH_LONG).show();
                     }
+                    progressBar.setVisibility(View.GONE);
                 }
             }, 5000);
 

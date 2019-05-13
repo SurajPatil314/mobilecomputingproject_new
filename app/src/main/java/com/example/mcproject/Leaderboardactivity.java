@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class Leaderboardactivity extends AppCompatActivity {
     public static TextView gamename;
     int gamefound;
     private TextView gameId;
+    private ProgressBar progressBar;
 
     ListView simpleList;
     //String countryList[] = {"India", "China", "australia", "Portugle", "America", "NewZealand"};
@@ -48,12 +50,11 @@ public class Leaderboardactivity extends AppCompatActivity {
         dataref1 = FirebaseDatabase.getInstance().getReference().child("leaderboard");
         simpleList = (ListView)findViewById(R.id.simpleListView);
         gameId= (TextView)findViewById(R.id.gameId);
-
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
     public void searchgame(View view) {
         final String gameseached= gamename.getText().toString();
-
         System.out.println("game name for leaderbaord"+gameseached);
         if(gameseached==null)
         {
@@ -81,7 +82,7 @@ public class Leaderboardactivity extends AppCompatActivity {
                     {
                         Toast.makeText(Leaderboardactivity.this, "searched game record found successfully", Toast.LENGTH_LONG).show();
                         //your logic comes here Ashlesha
-
+                        progressBar.setVisibility(View.VISIBLE);
                         dataref1 = dataref1.child(gameseached);
                         simpleList = (ListView)findViewById(R.id.simpleListView);
                         try {
@@ -96,10 +97,9 @@ public class Leaderboardactivity extends AppCompatActivity {
                                         simpleList.setAdapter(arrayAdapter);
                                     }
                                     else{
-
                                         Toast.makeText(Leaderboardactivity.this, "No one played this game yet", Toast.LENGTH_LONG).show();
                                     }
-
+                                    progressBar.setVisibility(View.GONE);
                                 }
                             }, 5000);
 
@@ -142,7 +142,6 @@ public class Leaderboardactivity extends AppCompatActivity {
                 int i = 0;
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     for(DataSnapshot ds1 : ds.getChildren()){
-
                         System.out.println("Key- "+ds1.getKey()+" Value - " + ds1.getValue());
                         if(ds1.getKey().equals("emailid"))
                             key = (String) ds1.getValue();
@@ -175,6 +174,18 @@ public class Leaderboardactivity extends AppCompatActivity {
             result.put(entry.getKey(), entry.getValue());
         }
 
+        ArrayList<String> keys = new ArrayList<String>(result.keySet());
+        Map<String, Long> res = new LinkedHashMap<>();
+        String k = "";
+        for(int i = result.size()-1;i>=0;i--){
+            System.out.println("Keys - " + keys.get(i));
+            k = keys.get(i);
+            System.out.println("Res key - " + k);
+            res.put(k,result.get(k));
+        }
+
+        result.clear();
+        result = res;
 
         System.out.println("Hashmap - ");
         int i = 1;
@@ -189,6 +200,8 @@ public class Leaderboardactivity extends AppCompatActivity {
             System.out.println(key + " " + value);
             i++;
         }
+
+
 
         System.out.println("Length of winner - " + winner.size());
     }
