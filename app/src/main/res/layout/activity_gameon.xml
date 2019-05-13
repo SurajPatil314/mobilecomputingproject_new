@@ -63,14 +63,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="111dp">
+        android:layout_height="83dp">
 
         <TextView
             android:id="@+id/showhinttext"
             android:layout_width="287dp"
             android:layout_height="47dp"
-            android:text="Hints"
             android:scrollbars="vertical"
+            android:text="Hints"
             android:textColor="#ffffff"
             android:textStyle="bold" />
 
@@ -83,9 +83,6 @@
             android:background="@drawable/trans_button"
             android:onClick="showHints"
             android:text="Show Hint" />
-
-
-
 
     </LinearLayout>
 

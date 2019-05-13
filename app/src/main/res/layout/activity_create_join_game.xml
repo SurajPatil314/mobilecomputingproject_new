@@ -6,58 +6,63 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    android:padding="20dp"
+    android:padding="18dp"
     tools:context=".create_join_game">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_height="154dp"
         android:clipToPadding="false"
+        android:gravity="center"
         android:orientation="horizontal">
+
         <android.support.v7.widget.CardView
             android:id="@+id/create_game"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
             android:layout_margin="10dp"
-            android:onClick="setnewgame"
+            android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true">
+            android:onClick="setnewgame">
+
             <LinearLayout
-                android:background="@color/lightBrown"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:background="@color/lightBrown"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
-                    android:layout_height="64dp"
                     android:layout_width="64dp"
+                    android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroudgreen"
-                    android:src="@drawable/ic_add_circle_outline_black_24dp"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:src="@drawable/ic_add_circle_outline_black_24dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
                     android:text="Create Game"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/lightGreyLine"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="10dp"
+                    android:background="@color/lightGreyLine" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:id="@+id/join_game"
-            android:onClick="setsearchgame"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
             android:layout_margin="10dp"
+            android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true">
+            android:onClick="setsearchgame">
 
             <LinearLayout
                 android:id="@+id/join_game1"
@@ -94,13 +99,14 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="155dp"
+        android:layout_marginLeft="100dp"
         android:gravity="center">
         <android.support.v7.widget.CardView
             android:id="@+id/show_board"
             android:onClick="go_to_leaderboard"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
             android:layout_margin="10dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true">
@@ -142,9 +148,9 @@
     <LinearLayout
         android:id="@+id/hiddencreate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/textView5"
@@ -166,7 +172,7 @@
         <Button
             android:id="@+id/new_game"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@drawable/trans_button"
             android:onClick="go_create_game"
             android:text="create game" />
@@ -176,9 +182,9 @@
     <LinearLayout
         android:id="@+id/hiddensearch"
         android:layout_width="match_parent"
-        android:layout_height="156dp"
+        android:layout_height="145dp"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/textView6"
@@ -212,7 +218,7 @@
         <Button
             android:id="@+id/search_game_hidden"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@drawable/trans_button"
             android:onClick="go_search_game"
             android:text="Search game" />
@@ -221,9 +227,9 @@
 
     <Button
         android:id="@+id/Logout"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:onClick="logout"
         android:text="Log out"
         android:background="@drawable/trans_button"/>
