@@ -66,14 +66,14 @@
         android:layout_width="match_parent"
         android:layout_height="67dp"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Game Id: "
+            android:text="Leaderboard: "
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
             android:textSize="25dp"
-            />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/gameId"
             android:layout_width="match_parent"
