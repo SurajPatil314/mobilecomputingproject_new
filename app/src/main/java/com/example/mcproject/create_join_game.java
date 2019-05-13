@@ -109,7 +109,6 @@ public class create_join_game extends AppCompatActivity {
                             gamefound=1;
                             break;
                         }
-
                     }
 
                     if(gamefound==1)
@@ -125,7 +124,6 @@ public class create_join_game extends AppCompatActivity {
                         System.out.println("gamefound value is 0 at the end");
                         Toast.makeText(create_join_game.this, "to creategame you need to enter game name.Enter game name first", Toast.LENGTH_LONG).show();
                     }
-
                 }
 
                 @Override
@@ -134,28 +132,8 @@ public class create_join_game extends AppCompatActivity {
 
                 }
             });
-
-
-
         }
-
-
     }
-/*
-    public void startGame(View view) {
-        String gamename = searchgame_tostart.getText().toString().trim();
-        gamename = "firstgame";
-        if(gamename.isEmpty())
-            return;
-
-        Intent intent = new Intent(getApplicationContext(), GameOn.class);
-        Bundle b = new Bundle();
-        b.putString("GameName", gamename);
-        intent.putExtras(b);
-        startActivity(intent);
-    }
-    commented by Suraj
-    */
 
     public void logout(View view) {
         if(fauthSS != null)

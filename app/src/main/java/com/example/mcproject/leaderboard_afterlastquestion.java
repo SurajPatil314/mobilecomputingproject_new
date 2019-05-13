@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +41,8 @@ private TextView gameId;
     private DatabaseReference dataref;
     private String gameName;
     private ProgressBar progressBar;
-
+    private String user;
+    private ImageView imageView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ private TextView gameId;
         setContentView(R.layout.activity_leaderboard_afterlastquestion);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         gameId = (TextView) findViewById(R.id.gameId);
+        imageView3 = (ImageView)findViewById(R.id.imageView3);
         Bundle extras = getIntent().getExtras();
         if(extras == null)
             return;
@@ -60,6 +65,7 @@ private TextView gameId;
                 public void run() {
                     compare();
                     gameId.setText(gameName);
+                    getResult();
                     if(winner.size()>0) {
                         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(leaderboard_afterlastquestion.this, R.layout.activity_listview, R.id.textView, winner);
                         simpleList.setAdapter(arrayAdapter);
@@ -126,7 +132,16 @@ private TextView gameId;
         for (Map.Entry<String, Long> entry : list) {
             result.put(entry.getKey(), entry.getValue());
         }
+        Map<String, Long> res = new LinkedHashMap<>();
+        ArrayList<String> keys = new ArrayList<String>(result.keySet());
+        String k = "";
+        for(int i = result.size()-1;i>=0;i--){
+            k = keys.get(i);
+            res.put(k,result.get(k));
+        }
 
+        result.clear();
+        result = res;
 
         System.out.println("Hashmap - ");
         int i =1;
@@ -150,6 +165,17 @@ private TextView gameId;
         startActivity(i);
     }
 
-
+    public void getResult(){
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        email = email.trim();
+        String win = winner.get(0);
+        if(win.contains(email)){
+            imageView3.setVisibility(View.VISIBLE);
+        }
+        else{
+            imageView3.setImageResource(R.drawable.lost);
+            imageView3.setVisibility(View.VISIBLE);
+        }
+    }
 
 }

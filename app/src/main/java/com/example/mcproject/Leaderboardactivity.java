@@ -75,13 +75,13 @@ public class Leaderboardactivity extends AppCompatActivity {
                             gamefound=1;
                             break;
                         }
-
                     }
 
                     if(gamefound==1)
                     {
                         Toast.makeText(Leaderboardactivity.this, "searched game record found successfully", Toast.LENGTH_LONG).show();
                         //your logic comes here Ashlesha
+                        gameId.setText(gameseached);
                         progressBar.setVisibility(View.VISIBLE);
                         dataref1 = dataref1.child(gameseached);
                         simpleList = (ListView)findViewById(R.id.simpleListView);
@@ -106,16 +106,12 @@ public class Leaderboardactivity extends AppCompatActivity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
-
-
                     }
                     else
                     {
                         System.out.println("gamefound value is 0 at the end");
                         Toast.makeText(Leaderboardactivity.this, "searched game record not found", Toast.LENGTH_LONG).show();
                     }
-
                 }
 
                 @Override
@@ -125,7 +121,6 @@ public class Leaderboardactivity extends AppCompatActivity {
                 }
             });
         }
-
     }
 
     public void goback(View view) {
