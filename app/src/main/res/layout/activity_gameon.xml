@@ -17,9 +17,10 @@
 
         <TextView
             android:id="@+id/Question"
-            android:layout_width="300dp"
+            android:layout_width="295dp"
             android:layout_height="wrap_content"
             android:text="First Question appears here.."
+            android:layout_marginLeft="20dp"
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:scrollbars="vertical"
