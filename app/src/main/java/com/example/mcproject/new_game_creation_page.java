@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class new_game_creation_page extends AppCompatActivity implements LocationListener {
+public class  new_game_creation_page extends AppCompatActivity implements LocationListener {
     private FirebaseAuth fauth;
     private TextView creatorname;
     String creatorofgame;
